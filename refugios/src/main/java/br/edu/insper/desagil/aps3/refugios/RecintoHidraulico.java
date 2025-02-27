@@ -1,4 +1,4 @@
-package br.edu.insper.desagil.aps3.refugios;
+Rpackage br.edu.insper.desagil.aps3.refugios;
 
 public class RecintoHidraulico extends RecintoSimples {
     private int numeroRegistros;
