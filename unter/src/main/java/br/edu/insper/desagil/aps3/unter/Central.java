@@ -14,24 +14,12 @@ public class Central {
         this.corridas.add(corrida);
     }
 
-    private boolean comparaStrings(String s1, String s2) {
-        if (s1.length() != s2.length()) {
-            return false;
-        }
-        for (int i = 0; i < s1.length(); i++) {
-            if (s1.charAt(i) != s2.charAt(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public double mediaPassageiro(String cpf) {
         int soma = 0;
         int quantidade = 0;
 
         for (Corrida corrida : corridas) {
-            if (comparaStrings(corrida.getPassageiro().getCpf(), cpf)) {
+            if (corrida.getPassageiro().getCpf().equals(cpf)) {
                 int nota = corrida.getNotaPassageiro();
                 if (nota > 0) {
                     soma += nota;
@@ -51,7 +39,7 @@ public class Central {
         int quantidade = 0;
 
         for (Corrida corrida : corridas) {
-            if (comparaStrings(corrida.getMotorista().getCpf(), cpf)) {
+            if (corrida.getMotorista().getCpf().equals(cpf)) {
                 int nota = corrida.getNotaMotorista();
                 if (nota > 0) {
                     soma += nota;
