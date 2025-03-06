@@ -1,12 +1,16 @@
 package br.edu.insper.desagil.aps3.unter;
 
-<<<<<<< HEAD
-public class CentralTest {
-=======
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 public class CentralTest {
-    
->>>>>>> fd71142dafed1cd1e05ef2d302743693d14b7a19
+    Central central;
+    Passageiro passageiro;
+    Motorista motorista;
+
+    @BeforeEach
+    void setUp(){
+        central = new Central();
+        passageiro = new Passageiro("12345678900", "Reinaldo");
+        motorista = new Motorista("01234567890", "Carlos");
+    }
 }
