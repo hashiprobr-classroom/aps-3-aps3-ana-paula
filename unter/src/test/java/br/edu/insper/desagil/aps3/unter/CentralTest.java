@@ -11,15 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CentralTest {
     private Central central;
     private Passageiro passageiro;
-    private Passageiro passageiro2;
     private Motorista motorista;
-    private Motorista motorista2;
-    private Corrida corrida;
+    private List<Corrida> corridas;
 
     @BeforeEach
     void setUp(){
         central = new Central();
-        passageiro = new Passageiro("12345678900", "Reinaldo");
+        passageiro = new Passageiro("12345678000", "Ana Paula");
         motorista = new Motorista("01234567890", "Carlos");
     }
 
@@ -35,42 +33,53 @@ public class CentralTest {
 
     @Test
     void avaliacoesPassageiro(){
-        passageiro2 = new Passageiro("12345678901", "Reinaldo José");
+        Passageiro passageiro2 = new Passageiro("12345678901", "Reinaldo José");
+        corridas = new ArrayList<>();
 
         Corrida corrida1 = new Corrida(passageiro, motorista);
         motorista.avalia(corrida1, 0);
+        central.adiciona(corrida1);
 
         Corrida corrida2 = new Corrida(passageiro, motorista);
         motorista.avalia(corrida2, 4);
+        central.adiciona(corrida2);
 
         Corrida corrida3 = new Corrida(passageiro, motorista);
         motorista.avalia(corrida3, 5);
+        central.adiciona(corrida3);
 
         Corrida corrida4 = new Corrida(passageiro2, motorista);
         motorista.avalia(corrida4, 3);
+        central.adiciona(corrida4);
 
-        assertEquals(4.5, central.mediaPassageiro("12345678900"));
+        assertEquals(4.5, central.mediaPassageiro("12345678000"));
     }
 
     @Test
     void avaliacoesMotorista(){
-        motorista2 = new Motorista("00123456789", "Carlos José");
+        Motorista motorista2 = new Motorista("00123456789", "Carlos José");
+        corridas = new ArrayList<>();
 
         Corrida corrida1 = new Corrida(passageiro, motorista);
-        motorista.avalia(corrida1, 0);
+        passageiro.avalia(corrida1, 0);
+        central.adiciona(corrida1);
 
         Corrida corrida2 = new Corrida(passageiro, motorista);
-        motorista.avalia(corrida2, 2);
+        passageiro.avalia(corrida2, 2);
+        central.adiciona(corrida2);
 
         Corrida corrida3 = new Corrida(passageiro, motorista);
-        motorista.avalia(corrida3, 3);
+        passageiro.avalia(corrida3, 3);
+        central.adiciona(corrida3);
 
         Corrida corrida4 = new Corrida(passageiro, motorista2);
-        motorista.avalia(corrida4, 1);
+        passageiro.avalia(corrida4, 1);
+        central.adiciona(corrida4);
 
         Corrida corrida5 = new Corrida(passageiro, null);
-        motorista.avalia(corrida5, 1);
+        passageiro.avalia(corrida5, 1);
+        central.adiciona(corrida5);
 
-        assertEquals(2.5, central.mediaMotorista("01234567890"));
+        assertEquals(2.5, central.mediaMotorista("12345678000"));
     }
 }

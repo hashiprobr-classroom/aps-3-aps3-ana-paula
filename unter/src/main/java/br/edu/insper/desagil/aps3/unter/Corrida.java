@@ -35,7 +35,9 @@ public class Corrida {
         } else if (nota > 5) {
             return 5;
         }
-        return nota;
+        else {
+            return nota;
+        }
     }
 
     public void setNotaPassageiro(int nota) {

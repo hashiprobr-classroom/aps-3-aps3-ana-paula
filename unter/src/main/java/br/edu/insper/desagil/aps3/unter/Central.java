@@ -39,7 +39,7 @@ public class Central {
         int quantidade = 0;
 
         for (Corrida corrida : corridas) {
-            if (corrida.getMotorista().getCpf().equals(cpf)) {
+            if (corrida.getMotorista().getCpf().equals(cpf) && corrida.getMotorista()!=null) {
                 int nota = corrida.getNotaMotorista();
                 if (nota > 0) {
                     soma += nota;
