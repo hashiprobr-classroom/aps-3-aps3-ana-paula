@@ -17,5 +17,7 @@ public class Usuario {
         return nome;
     }
 
+    public void avalia(Corrida corrida, int nota) {
+
     }
 }
