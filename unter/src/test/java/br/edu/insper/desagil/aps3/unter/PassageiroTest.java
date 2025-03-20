@@ -8,30 +8,31 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PassageiroTest {
     private Passageiro passageiro;
-    private Corrida corrida;
-    private Motorista motorista;
 
     @BeforeEach
     void setUp(){
-        passageiro = new Passageiro("38955468210", "José");
+        passageiro = new Passageiro("cpf", "nome");
     }
 
     @Test
-    void constroi(){
-        assertEquals("38955468210", passageiro.getCpf());
-        assertEquals("José", passageiro.getNome());
+    void constoi(){
+        assertEquals("nome", passageiro.getNome());
     }
 
     @Test
     void mudaNome(){
-        passageiro.setNome("Reinaldo");
-        assertEquals("Reinaldo", passageiro.getNome());
+        passageiro.setNome("passageiro");
+        assertEquals("passageiro", passageiro.getNome());
     }
 
     @Test
     void avalia(){
-        motorista = new Motorista("12345678900", "Carlos");
-        corrida = new Corrida(passageiro, motorista);
+        //o passageiro precisa avaliar a corrida -> método avalia
+        //criar motorista e corrida
+        //verificar a nota do motorista: getNotaMotorista()
+
+        Motorista motorista = new Motorista("cpfmot", "motorista");
+        Corrida corrida = new Corrida(passageiro, motorista);
 
         passageiro.avalia(corrida, 3);
 
@@ -40,8 +41,8 @@ public class PassageiroTest {
 
     @Test
     void avaliaBaixo(){
-        motorista = new Motorista("12345678900", "Carlos");
-        corrida = new Corrida(passageiro, motorista);
+        Motorista motorista = new Motorista("cpfmot", "motorista");
+        Corrida corrida = new Corrida(passageiro, motorista);
 
         passageiro.avalia(corrida, 0);
 
@@ -50,12 +51,11 @@ public class PassageiroTest {
 
     @Test
     void avaliaAlto(){
-        motorista = new Motorista("12345678900", "Carlos");
-        corrida = new Corrida(passageiro, motorista);
+        Motorista motorista = new Motorista("cpfmot", "motorista");
+        Corrida corrida = new Corrida(passageiro, motorista);
 
         passageiro.avalia(corrida, 6);
 
         assertEquals(5, corrida.getNotaMotorista());
     }
-
 }

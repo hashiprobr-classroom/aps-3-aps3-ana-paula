@@ -21,7 +21,7 @@ public class Central {
         for (Corrida corrida : corridas) {
             if (corrida.getPassageiro().getCpf().equals(cpf)) {
                 int nota = corrida.getNotaPassageiro();
-                if (nota > 0) {
+                if (nota > 1) {
                     soma += nota;
                     quantidade++;
                 }
@@ -39,9 +39,10 @@ public class Central {
         int quantidade = 0;
 
         for (Corrida corrida : corridas) {
-            if (corrida.getMotorista().getCpf().equals(cpf) && corrida.getMotorista()!=null) {
+            //corrida.getMotorista()!= null tem que estar antes para nao dar erro no getCpf
+            if (corrida.getMotorista()!=null && corrida.getMotorista().getCpf().equals(cpf)) {
                 int nota = corrida.getNotaMotorista();
-                if (nota > 0) {
+                if (nota > 1) {
                     soma += nota;
                     quantidade++;
                 }
